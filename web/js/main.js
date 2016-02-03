@@ -84,7 +84,7 @@ var page2Load = function(fnEnd) {
 		fnEnd && fnEnd();
 	});
 };
-var setPage2 = function(money) {
+var setPage2 = function(money, withoutShare) {
 	$('#page2-money').html(money);
 	money = parseInt(money);
 	for (var i = 0; i < blockArr.length; i++) {
@@ -93,15 +93,26 @@ var setPage2 = function(money) {
 			break;
 		}
 	}
+	if (!withoutShare) {
+		wx_title = '新年我能轻松赚' + money + '万，不跟尔等抢红包啦~';
+		// wx_desc = '新年我能轻松赚' + money + '万，不跟尔等抢红包啦~';
+		wx_link = baseUrl + '/index.html?m=' + money;
+		setShare();
+		$('.page2-btn2').show();
+		$('#page2-btn1-img').attr('src', './images/btn3.png').parent().removeClass('center');
+		$('#page2-title-img').attr('src', './images/page2-title-1.png');
+	}
 };
 
 
 // ?m=33 进入页面
 if (get.m) {
 	page2Load(function() {
-		$('#page2-btn1-img').attr('src', './images/btn1.png');
 		page1Load();
-		setPage2(get.m);
+		$('.page2-btn2').hide();
+		$('#page2-btn1-img').attr('src', './images/btn1.png').parent().addClass('center');
+		$('#page2-title-img').attr('src', './images/page2-title-2.png');
+		setPage2(get.m, true);
 		page2.fadeIn();
 	});
 } else {
@@ -119,13 +130,10 @@ var onShake = function() { // 摇一摇成功
 	shakable = false;
 	var money = getMoney();
 	setPage2(money);
-	wx_link += '?m=' + money;
-	setShare();
-	$('#page2-btn1-img').attr('src', './images/btn3.png');
 	page2.fadeIn();
 };
 window.DeviceMotionEvent && (function() {
-	var SHAKE_THRESHOLD = 600;
+	var SHAKE_THRESHOLD = 2000;
 	var last_update = 0;
 	var x, y, z, last_x, last_y, last_z;
 	window.ondevicemotion = function(obj) {
@@ -221,6 +229,10 @@ $('#page2-btn1-img').on('click', function() {
 	page2.fadeOut();
 	page1.fadeIn();
 	shakable = true;
+	wx_title = '抢完红包看一看, 新年你能赚多少？';
+	// wx_desc = '抢完红包看一看, 新年你能赚多少？';
+	wx_link = baseUrl + '/index.html';
+	setShare();
 });
 $('#page2-btn2-img').on('click', function() {
 	page3.fadeIn();

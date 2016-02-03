@@ -160,11 +160,14 @@ $img: '../images';
 				@include atlw(42%);
 			}
 		}
+		&-title {
+			@include aposx(14%, set(389));
+		}
 		&-main {
-			@include atlw(14%);
+			@include atlw(23%);
 		}
 		&-money {
-			@include atlw(53%);
+			@include atlw(42%);
 			text-align: center;
 			color: #ea273c;
 			font-weight: bold;
@@ -182,6 +185,9 @@ $img: '../images';
 		}
 		&-btn1 {
 			@include atlw(85%, 11.5%, 35%);
+			&.center {
+				@include aposx(85%, 35%);
+			}
 		}
 		&-btn2 {
 			@include atrw(85%, 11.5%, 35%);
