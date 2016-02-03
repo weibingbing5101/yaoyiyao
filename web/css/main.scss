@@ -1,14 +1,12 @@
 @charset "utf-8";
 
 
-// 张树垚 2015-11-21 14:52:56 创建
-// 京东到家
+// 张树垚 2016-02-02 15:44:33 创建
+// 果仁宝摇一摇
 
 
 
-@import "../../../../Git/zSass/main";
-
-$isTest: true;
+@import "../../../zSass/main";
 
 
 
@@ -20,15 +18,18 @@ $isTest: true;
 	body {
 		margin: 0;
 		font-family: Arial,Verdana;
-		background-color: #fff;
+		background-color: #feb41d;
 	}
 // 页面设置 End
 
 
 // 试用函数
-	$set-origin: 640 !default;
+	$set-origin: 750 !default;
 	@function set($num: 0, $origin: $set-origin) {
 		@return round($num / $origin * 100) * 1%;
+	}
+	@function set-h($num) {
+		@return set($num, 1334);
 	}
 	@mixin center($top: 50%) { // 竖直方向焦点位置
 		@include absolute($top, "lw");
@@ -44,7 +45,7 @@ $isTest: true;
 	@function floor-percent($num: 0) { // 将小数转成百分比并去尾
 		@return floor(percentage($num));
 	}
-	%fadeIn { display: none; opacity: 0; }
+	%fade-in { display: none; opacity: 0; }
 	%click {
 		&:after {
 			content: "";
@@ -89,216 +90,111 @@ $img: '../images';
 	}
 }
 
-.loading {
-	@extend %afull;
-	z-index: 2000;
-	background-color: #fff;
-}
 
-.download {
-	display: none;
-	@include aposx(90%, set(353));
-	z-index: 900;
-	@include y(0);
-	@include aniframe2(2s ease-in-out infinite 1s) {
-		0%, 18%, 36%, 100% { @include y(0); }
-		9%, 27% { @include y(-5px);}
-	};
-}
-
-.dialog {
-	&-box {
-		@extend %afull;
-		z-index: 1000;
-		background-color: rgba(0,0,0,.8);
-		display: none;
-	}
-	&1 {
-		@extend %afull;
-		&-word {
-			@include atlw(30%);
-		}
-		&-close {
-			@include aposx(60%, set(89));
-		}
-	}
-}
-
-%page {
-	@extend %afull;
-	overflow: hidden;
-}
 .page {
 	&-box {
 		@extend %afull;
+		overflow: hidden;
 	}
 	&1 {
-		@extend %page;
-		$t-top: 7%;
-		$b-top: 68%;
+		@extend %afull;
+		overflow: hidden;
+		&-flag {
+			&-1 {
+				@extend %atlw;
+			}
+			&-2 {
+				@extend %atlw;
+			}
+		}
+		&-title {
+			@include atlw(11%);
+		}
 		&-bg {
-			@extend %afull;
+			@extend %ablw;
 		}
-		&-t1 {
-			@include atlw($t-top);
+		&-bg2 {
+			@include atlw(set-h(600));
 		}
-		&-t2 {
-			@include atlw($t-top);
+		&-hand {
+			@include atlw(set-h(860), 0, set(112));
 		}
-		&-b1 {
-			@include atlw($b-top);
-			@include rotate(0);
+		&-circle {
+			@include aposx(set-h(570), set(512));
+			@include aniframe2(12s linear infinite) {
+				0% { @include rotate(0); }
+				100% { @include rotate(360deg); }
+			}
+		}
+		&-phone {
+			@include aposx(set-h(640), set(181));
 			@include aniframe2(2s linear infinite) {
-				0%, 40%, 100% { @include rotate(0); }
-				5%, 25% { @include rotate(3deg); }
-				15%, 35% { @include rotate(-3deg); }
-			};
+				0%, 10%, 20%, 30%, 40%, 50%, 100% { @include rotate(0); }
+				5%, 25%, 45% { @include rotate(-10deg); }
+				15%, 35% { @include rotate(10deg); }
+			}
 		}
-		&-b2 {
-			@include atlw($b-top);
-		}
-		&-tuser {
-			// background-color: rgba(0,0,0,.6);
-			@include atlwh(-10%, 46%, 100%, 40%);
-			display: flex;
-			align-items: center;
-			// justify-content: center;
-		}
-		&-tname {
-			color: #fff;
-			font-size: 20px;
-			white-space: nowrap;
-		}
-		&-timg {
-			margin-left: .5em;
-			@include square(24px);
-			border-radius: 3px;
-			overflow: hidden;
-		}
-		&-button {
-			@include atlwh(0, 18%, 64%, 54%);
-			// background-color: rgba(0,0,0,.6);
+		&-word {
+			@include aposx(set-h(875), set(331));
 		}
 	}
 	&2 {
-		@extend %page;
-		&-bg {
-			@extend %afull;
+		@extend %afull;
+		overflow: hidden;
+		&-head {
+			@extend %atlw;
 		}
-		&-title {
-			@include atlw(5%);
+		&-flag {
+			&-1 {
+				@include atlw(38%);
+			}
+			&-2 {
+				@include atlw(42%);
+			}
 		}
-		&-input {
-			@extend %reset-input;
-			// background-color: rgba(0,0,0,.6);
-			@include atlwh(17%, 16%, 66%, 23%);
+		&-main {
+			@include atlw(14%);
+		}
+		&-money {
+			@include atlw(53%);
 			text-align: center;
-			font-size: 20px;
+			color: #ea273c;
 			font-weight: bold;
-			color: #dd1d4a;
-			letter-spacing: .2em;
+			font-family: Helvetica;
+			font-size: 24px;
+			letter-spacing: 1px;
+			&-img {
+				@include inline-block(middle);
+				width: 22px;
+				margin-left: 2px;
+			}
 		}
-		&-button {
-			@include atlwh(65%, 27%, 45%, 26%);
-			// background-color: rgba(0,0,0,.6);
+		&-desc {
+			@include atlw(66%);
 		}
-		&-word {
-			@include atlw(32%);
+		&-btn1 {
+			@include atlw(85%, 11.5%, 35%);
+		}
+		&-btn2 {
+			@include atrw(85%, 11.5%, 35%);
+		}
+		&-bottom {
+			@include atlw(95%);
 		}
 	}
 	&3 {
-		@extend %page;
-		&-bg {
-			@extend %afull;
-		}
-		&-word {
-			@include atlw(4%);
-		}
-		&-main {
-			@include atlw(33%);
-		}
-	}
-	&4 {
-		@extend %page;
-		&-bg {
-			@extend %afull;
-		}
-		&-title {
-			@include atlw(9%);
-		}
-		&-word {
-			@include atlw(22%);
+		@extend %afull;
+		@extend %fade-in;
+		overflow: hidden;
+		background-color: rgba(0,0,0,.8);
+		&-share {
+			@include atlw(5%);
 		}
 	}
 }
 
 
 
-
-#fountainTextG{
-	overflow: hidden;
-	@include atl(50%, 50%);
-	@include t3d(-50%, -50%);
-}
-
-.fountainTextG{
-	color:rgb(0,0,0);
-	font-family:Arial;
-	font-size:24px;
-	text-decoration:none;
-	font-weight:normal;
-	font-style:normal;
-	float:left;
-	animation-name:bounce_fountainTextG;
-	animation-duration:2.09s;
-	animation-iteration-count:infinite;
-	animation-direction:normal;
-	transform:scale(.5);
-}#fountainTextG_1{
-	animation-delay:0.75s;
-}
-#fountainTextG_2{
-	animation-delay:0.9s;
-}
-#fountainTextG_3{
-	animation-delay:1.05s;
-}
-#fountainTextG_4{
-	animation-delay:1.2s;
-}
-#fountainTextG_5{
-	animation-delay:1.35s;
-}
-#fountainTextG_6{
-	animation-delay:1.5s;
-}
-#fountainTextG_7{
-	animation-delay:1.64s;
-}
-#fountainTextG_8{
-	animation-delay:1.79s;
-}
-#fountainTextG_9{
-	animation-delay:1.94s;
-}
-#fountainTextG_10{
-	animation-delay:2.09s;
-}
-
-
-
-
-@keyframes bounce_fountainTextG{
-	0%{
-		transform:scale(1);
-		color:rgb(0,0,0);
-	}
-
-	100%{
-		transform:scale(.5);
-		color:rgb(255,255,255);
-	}
-}
 
 
 

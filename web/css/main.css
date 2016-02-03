@@ -1,0 +1,50 @@
+.screen, .page-box, .page1, .page2, .page3 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.page1-flag-1, .page1-flag-2, .page2-head { position: absolute; top: 0; left: 0; width: 100%; }
+
+.page1-bg { position: absolute; left: 0; bottom: 0; width: 100%; }
+
+html, body { width: 100%; height: 100%; -webkit-tap-highlight-color: transparent; }
+
+body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
+
+.page3 { display: none; opacity: 0; }
+
+.img, .img-w, .img-h, .img-f { position: relative; display: block; }
+.img-w { width: 100%; }
+.img-h { height: 100%; }
+.img-f { width: 100%; height: 100%; }
+
+.screen { overflow: hidden; }
+@media only screen and (min-width: 960px) { .screen { position: relative; width: 480px; margin: 0 auto; height: 100%; } }
+
+.page-box { overflow: hidden; }
+.page1 { overflow: hidden; }
+.page1-title { position: absolute; top: 11%; left: 0; width: 100%; }
+.page1-bg2 { position: absolute; top: 45%; left: 0; width: 100%; }
+.page1-hand { position: absolute; top: 64%; left: 0; width: 15%; }
+.page1-circle { position: absolute; top: 43%; width: 68%; left: 16%; -webkit-animation: page1-circle 12s linear infinite; animation: page1-circle 12s linear infinite; }
+@-webkit-keyframes page1-circle { 0% { -webkit-transform: rotate(0); transform: rotate(0); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes page1-circle { 0% { -webkit-transform: rotate(0); transform: rotate(0); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+.page1-phone { position: absolute; top: 48%; width: 24%; left: 38%; -webkit-animation: page1-phone 2s linear infinite; animation: page1-phone 2s linear infinite; }
+@-webkit-keyframes page1-phone { 0%, 10%, 20%, 30%, 40%, 50%, 100% { -webkit-transform: rotate(0); transform: rotate(0); }
+  5%, 25%, 45% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+  15%, 35% { -webkit-transform: rotate(10deg); transform: rotate(10deg); } }
+@keyframes page1-phone { 0%, 10%, 20%, 30%, 40%, 50%, 100% { -webkit-transform: rotate(0); transform: rotate(0); }
+  5%, 25%, 45% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+  15%, 35% { -webkit-transform: rotate(10deg); transform: rotate(10deg); } }
+.page1-word { position: absolute; top: 66%; width: 44%; left: 28%; }
+.page2 { overflow: hidden; }
+.page2-flag-1 { position: absolute; top: 38%; left: 0; width: 100%; }
+.page2-flag-2 { position: absolute; top: 42%; left: 0; width: 100%; }
+.page2-main { position: absolute; top: 14%; left: 0; width: 100%; }
+.page2-money { position: absolute; top: 53%; left: 0; width: 100%; text-align: center; color: #ea273c; font-weight: bold; font-family: Helvetica; font-size: 24px; letter-spacing: 1px; }
+.page2-money-img { display: inline-block; vertical-align: middle; width: 22px; margin-left: 2px; }
+.page2-desc { position: absolute; top: 66%; left: 0; width: 100%; }
+.page2-btn1 { position: absolute; top: 85%; left: 11.5%; width: 35%; }
+.page2-btn2 { position: absolute; top: 85%; right: 11.5%; width: 35%; }
+.page2-bottom { position: absolute; top: 95%; left: 0; width: 100%; }
+.page3 { overflow: hidden; background-color: rgba(0, 0, 0, 0.8); }
+.page3-share { position: absolute; top: 5%; left: 0; width: 100%; }

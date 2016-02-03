@@ -1,101 +1,82 @@
 
-// 张树垚 2015-09-16 20:39:03 创建
-// 呼呼
+// 张树垚 2016-02-02 15:45:09 创建
+// 果仁宝摇一摇
 
 var $dom = $(document).on('touchmove', function(ev) {
 	ev.preventDefault();
 });
 
-var screenBox = $('.screen');
 
-Math.double = function(num) {
-	var pre = num < 0 ? '-' : '';
-	num = Math.abs(num);
-	return pre + (num < 10 ? ('0' + num) : ('' + num));
-};
-
-
-var canSwipe = false;
-var Time = function(controll, imgBox, defaultNum, max) {
-
-	this.document = $(document);
-
-	this.controll = $(controll);
-	this.imgBox = $(imgBox);
-	this.num = defaultNum || '00';
-	this.max = max || 60;
-
-	this.imgs = this.imgBox.find('img');
-
-	this.seperate = 20;
-	this.startY = 0;
-	this.startNum = this.num;
-
-	this.set(this.num);
-	this.bind();
-};
-Time.prototype = {
-	bind: function() {
-		this.controll.on('touchstart', this.touchstart.bind(this));
-	},
-	set: function(num) {
-		console.log(num)
-		this.num = num;
-		this.imgs.forEach(this.setImg.bind(this));
-	},
-	setImg: function(img, i) {
-		img.src = './images/no/' + this.num[i] + '.png';
-	},
-	touchstart: function(ev) {
-		ev.preventDefault();
-		this.startY = ev.touches[0].pageY;
-		this.startNum = parseInt(this.num);
-		this.controll.on('touchmove', this.touchmove.bind(this));
-		this.controll.on('touchend', this.touchend.bind(this));
-	},
-	touchmove: function(ev) {
-		var newNum = Math.floor(this.startNum + (this.startY - ev.touches[0].pageY) / this.seperate);
-		newNum = Math.double((newNum % this.max + this.max) % this.max);
-		if (newNum != this.num) {
-			this.set(newNum);
-			canSwipe = true;
+var get = (function() {
+	return location.search.replace('?', '').split('&').reduce(function(result, item) {
+		if (item) {
+			item = item.split('=');
+			result[item[0]] = item[1];
 		}
-	},
-	touchend: function(ev) {
-		this.controll.off('touchmove');
-		this.controll.off('touchend');
+		return result;
+	}, {});
+})();
+
+
+// 20-30		5%
+// 31-50		10%
+// 51-75		15%
+// 76-100		25%
+// 101-200		20%
+// 201-500		15%
+// 501-800		8%
+// 801-1000		2%
+
+
+var getNumber = function(from, to) { // 取值
+	return parseInt(Math.random() * (to - from + 1)) + from;
+};
+var getBlock = function() { // 取区间
+	var num = parseInt(Math.random() * 100); // 0-99
+	var arr = [5,15,30,55,75,90,98,100];
+	var result = [
+		[20, 30],
+		[31, 50],
+		[51, 75],
+		[76, 100],
+		[101, 200],
+		[201, 500],
+		[501, 800],
+		[801, 1000]
+	];
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] > num) {
+			return result[i];
+		}
 	}
 };
-
-
-var hour = new Time('.page1-controll-left', '.page1-time-hour', '16', 24);
-var minute = new Time('.page1-controll-right', '.page1-time-minute', '30', 60);
-
-$('.page1-controll-bottom').on('swipeRight', function() {
-	if (canSwipe) {
-		$('.page2').show().anim({opacity: 1}, 1, 'linear');
-	} else {
-		alert('亲，先选择下班时间再开门哦！');
+var testGetBlock = function() {
+	var result = {};
+	var length = 10000;
+	var i, a;
+	var arr = [];
+	for (i = 0; i < length; i++) {
+		a = getBlock().join('-');
+		if (a in result) {
+			result[a]++;
+		} else {
+			result[a] = 1;
+		}
 	}
-});
-
-
-
-var $share = $('.share').on('click', function() {
-	$share.hide();
-});
-$('[data-share]').on('click', function() {
-	$share.show();
-});
-$('[data-test]').on('click', function() {
-	alert('测试');
-});
-
-
-
-
-
-
+	console.log('区间 => 概率');
+	for (i in result) {
+		arr.push({
+			num: parseInt(i.split('-')[0]),
+			key: i,
+			value: (result[i] / length * 100).toFixed(2) + '%'
+		});
+	}
+	arr.sort(function(a1, a2) {
+		return a1.num - a2.num;
+	}).forEach(function(item) {
+		console.log(item.key + ' => ' + item.value);
+	});
+};
 
 
 

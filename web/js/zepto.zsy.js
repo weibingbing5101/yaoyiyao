@@ -140,11 +140,11 @@ $.fn.rotate = function(rotate, time, type, fnEnd) {
  */
 $.fn.fadeIn = function(time, fnEnd) {
 	if (!arguments.length) {
-		time = 0.5;
+		time = 0.4;
 	};
 	if ($.isFunction(time)) {
 		fnEnd = time;
-		time = 0.5;
+		time = 0.4;
 	};
 	return this.show().anim({opacity: 1}, time, "linear", fnEnd);
 };
@@ -157,11 +157,11 @@ $.fn.fadeIn = function(time, fnEnd) {
  */
 $.fn.fadeOut = function(time, fnEnd) {
 	if (!arguments.length) {
-		time = 0.5;
+		time = 0.4;
 	};
 	if ($.isFunction(time)) {
 		fnEnd = time;
-		time = 0.5;
+		time = 0.4;
 	};
 	var self = this;
 	return this.anim({opacity: 0}, time, "linear", function() {
