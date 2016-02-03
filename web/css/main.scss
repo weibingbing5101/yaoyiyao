@@ -90,6 +90,12 @@ $img: '../images';
 	}
 }
 
+.music {
+	@include atrw(2%, 3%, set(78));
+	z-index: 100;
+	&.on {}
+}
+
 
 .page {
 	&-box {
@@ -98,6 +104,7 @@ $img: '../images';
 	}
 	&1 {
 		@extend %afull;
+		@extend %fade-in;
 		overflow: hidden;
 		&-flag {
 			&-1 {
@@ -140,6 +147,7 @@ $img: '../images';
 	}
 	&2 {
 		@extend %afull;
+		@extend %fade-in;
 		overflow: hidden;
 		&-head {
 			@extend %atlw;
