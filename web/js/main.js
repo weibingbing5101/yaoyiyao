@@ -126,11 +126,17 @@ if (get.m) {
 
 // 摇一摇
 var shakable = false;
+var shakeNumber = 0;
 var onShake = function() { // 摇一摇成功
 	shakable = false;
+	shakeNumber++;
+	if (shakeNumber > 1) {
+		$('.page2-button').show();
+	}
 	var money = getMoney();
 	setPage2(money);
 	page2.fadeIn();
+	$.os.ios && $('#audio-shake').get(0).play();
 };
 window.DeviceMotionEvent && (function() {
 	var SHAKE_THRESHOLD = 2000;
@@ -243,9 +249,11 @@ $('.music').on('click', function() {
 	if (bg.paused) {
 		bg.play();
 		self.addClass('on');
+		self.children().attr('src', './images/music-on.png');
 	} else {
 		bg.pause();
 		self.removeClass('on');
+		self.children().attr('src', './images/music-off.png');
 	}
 });
 

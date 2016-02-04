@@ -93,7 +93,13 @@ $img: '../images';
 .music {
 	@include atrw(2%, 3%, set(78));
 	z-index: 100;
-	&.on {}
+	&.on {
+		@include aniframe(music-on, 2s linear infinite) {
+			0%, 50%, 100% { transform: rotate(0) translate3d(0, 0, 0); }
+			25% { transform: rotate(-10deg) translate3d(-10%, 0, 0); }
+			75% { transform: rotate(10deg) translate3d(10%, 0, 0); }
+		}
+	}
 }
 
 
@@ -149,6 +155,9 @@ $img: '../images';
 		@extend %afull;
 		@extend %fade-in;
 		overflow: hidden;
+		&-bg {
+			@extend %center;
+		}
 		&-head {
 			@extend %atlw;
 		}
@@ -194,6 +203,19 @@ $img: '../images';
 		}
 		&-bottom {
 			@include atlw(95%);
+		}
+		&-button {
+			display: none;
+			@include atlw(78%, 5%, set(67));
+			@include aniframe2(3s ease-in-out infinite) {
+				0% { @include t3d(0, -300%); }
+				10% { @include t3d(0, 0); }
+				20% { @include t3d(0, -150%); }
+				30% { @include t3d(0, 0); }
+				40% { @include t3d(0, -50%); }
+				50% { @include t3d(0, 0); }
+				100% { @include t3d(0, 0); }
+			};
 		}
 	}
 	&3 {

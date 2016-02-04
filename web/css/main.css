@@ -8,6 +8,8 @@ html, body { width: 100%; height: 100%; -webkit-tap-highlight-color: transparent
 
 body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
 
+.page2-bg { position: absolute; top: 50%; left: 0; width: 100%; -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+
 .page1, .page2, .page3 { display: none; opacity: 0; }
 
 .img, .img-w, .img-h, .img-f { position: relative; display: block; }
@@ -19,7 +21,13 @@ body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
 @media only screen and (min-width: 960px) { .screen { position: relative; width: 480px; margin: 0 auto; height: 100%; } }
 
 .music { position: absolute; top: 2%; right: 3%; width: 10%; z-index: 100; }
-
+.music.on { -webkit-animation: music-on 2s linear infinite; animation: music-on 2s linear infinite; }
+@-webkit-keyframes music-on { 0%, 50%, 100% { -webkit-transform: rotate(0) translate3d(0, 0, 0); transform: rotate(0) translate3d(0, 0, 0); }
+  25% { -webkit-transform: rotate(-10deg) translate3d(-10%, 0, 0); transform: rotate(-10deg) translate3d(-10%, 0, 0); }
+  75% { -webkit-transform: rotate(10deg) translate3d(10%, 0, 0); transform: rotate(10deg) translate3d(10%, 0, 0); } }
+@keyframes music-on { 0%, 50%, 100% { -webkit-transform: rotate(0) translate3d(0, 0, 0); transform: rotate(0) translate3d(0, 0, 0); }
+  25% { -webkit-transform: rotate(-10deg) translate3d(-10%, 0, 0); transform: rotate(-10deg) translate3d(-10%, 0, 0); }
+  75% { -webkit-transform: rotate(10deg) translate3d(10%, 0, 0); transform: rotate(10deg) translate3d(10%, 0, 0); } }
 .page-box { overflow: hidden; }
 .page1 { overflow: hidden; }
 .page1-title { position: absolute; top: 11%; left: 0; width: 100%; }
@@ -50,5 +58,20 @@ body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
 .page2-btn1.center { position: absolute; top: 85%; width: 35%; left: 32.5%; }
 .page2-btn2 { position: absolute; top: 85%; right: 11.5%; width: 35%; }
 .page2-bottom { position: absolute; top: 95%; left: 0; width: 100%; }
+.page2-button { display: none; position: absolute; top: 78%; left: 5%; width: 9%; -webkit-animation: page2-button 3s ease-in-out infinite; animation: page2-button 3s ease-in-out infinite; }
+@-webkit-keyframes page2-button { 0% { -webkit-transform: translate3d(0, -300%, 0); transform: translate3d(0, -300%, 0); }
+  10% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  20% { -webkit-transform: translate3d(0, -150%, 0); transform: translate3d(0, -150%, 0); }
+  30% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  40% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+  50% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  100% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
+@keyframes page2-button { 0% { -webkit-transform: translate3d(0, -300%, 0); transform: translate3d(0, -300%, 0); }
+  10% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  20% { -webkit-transform: translate3d(0, -150%, 0); transform: translate3d(0, -150%, 0); }
+  30% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  40% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+  50% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  100% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
 .page3 { overflow: hidden; background-color: rgba(0, 0, 0, 0.8); }
 .page3-share { position: absolute; top: 5%; left: 0; width: 100%; }
