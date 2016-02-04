@@ -139,7 +139,7 @@ var onShake = function() { // 摇一摇成功
 	$.os.ios && $('#audio-shake').get(0).play();
 };
 window.DeviceMotionEvent && (function() {
-	var SHAKE_THRESHOLD = 2000;
+	var SHAKE_THRESHOLD = 1500;
 	var last_update = 0;
 	var x, y, z, last_x, last_y, last_z;
 	window.ondevicemotion = function(obj) {

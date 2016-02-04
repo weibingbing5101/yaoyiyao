@@ -176,17 +176,18 @@ $img: '../images';
 			@include atlw(23%);
 		}
 		&-money {
-			@include atlw(42%);
+			@include atlw(33%);
 			text-align: center;
 			color: #ea273c;
 			font-weight: bold;
 			font-family: Helvetica;
-			font-size: 24px;
+			font-size: 48px;
 			letter-spacing: 1px;
 			&-img {
 				@include inline-block(middle);
-				width: 22px;
+				width: 36px;
 				margin-left: 2px;
+				@include relative(-4px);
 			}
 		}
 		&-desc {

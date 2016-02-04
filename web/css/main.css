@@ -51,8 +51,8 @@ body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
 .page2-flag-2 { position: absolute; top: 42%; left: 0; width: 100%; }
 .page2-title { position: absolute; top: 14%; width: 52%; left: 24%; }
 .page2-main { position: absolute; top: 23%; left: 0; width: 100%; }
-.page2-money { position: absolute; top: 42%; left: 0; width: 100%; text-align: center; color: #ea273c; font-weight: bold; font-family: Helvetica; font-size: 24px; letter-spacing: 1px; }
-.page2-money-img { display: inline-block; vertical-align: middle; width: 22px; margin-left: 2px; }
+.page2-money { position: absolute; top: 33%; left: 0; width: 100%; text-align: center; color: #ea273c; font-weight: bold; font-family: Helvetica; font-size: 48px; letter-spacing: 1px; }
+.page2-money-img { display: inline-block; vertical-align: middle; width: 36px; margin-left: 2px; position: relative; top: -4px; }
 .page2-desc { position: absolute; top: 66%; left: 0; width: 100%; }
 .page2-btn1 { position: absolute; top: 85%; left: 11.5%; width: 35%; }
 .page2-btn1.center { position: absolute; top: 85%; width: 35%; left: 32.5%; }
