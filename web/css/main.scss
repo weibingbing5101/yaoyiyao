@@ -39,8 +39,15 @@
 		@include absolute($top, "lw");
 		@include t3d(0, - $top, 0);
 	}
+	@mixin center-translate($top: 50%, $left: 50%) {
+		@include absolute($top, $left);
+		@include t3d(-50%, -50%);
+	}
 	%center { // 默认竖直居中
 		@include center;
+	}
+	%center-translate {
+		@include center-translate;
 	}
 	@function floor-percent($num: 0) { // 将小数转成百分比并去尾
 		@return floor(percentage($num));
@@ -226,6 +233,16 @@ $img: '../images';
 		background-color: rgba(0,0,0,.8);
 		&-share {
 			@include atlw(5%);
+		}
+	}
+	&4 {
+		@extend %afull;
+		@extend %fade-in;
+		overflow: hidden;
+		background-color: rgba(0,0,0,.9);
+		&-word {
+			@include center-translate(44%, 54%);
+			width: 44%;
 		}
 	}
 }

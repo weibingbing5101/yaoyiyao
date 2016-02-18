@@ -1,10 +1,6 @@
+
 // 张树垚 2016-02-02 15:45:09 创建
 // 果仁宝摇一摇
-
-
-var shareWord = '吃完元宵看一看，猴年你能赚多少？'; // 分享(摇之前)
-var shareMoney = '宝宝元宵吃的少，可宝宝赚的多啊！{金额}万！不服来战？'; // 分享(摇之后)
-
 
 var $dom = $(document).on('touchmove', function(ev) {
 	ev.preventDefault();
@@ -37,7 +33,7 @@ var blockArr = [
 ];
 var getBlock = function() { // 取区间
 	var num = parseInt(Math.random() * 100); // 0-99
-	var arr = [5, 15, 30, 55, 75, 90, 98, 100];
+	var arr = [5,15,30,55,75,90,98,100];
 	for (var i = 0; i < arr.length; i++) {
 		if (arr[i] > num) {
 			return blockArr[i];
@@ -45,10 +41,10 @@ var getBlock = function() { // 取区间
 	}
 };
 var testGetBlock = function() {
-	var result = {},
-		length = 10000,
-		i, a,
-		arr = [];
+	var result = {};
+	var length = 10000;
+	var i, a;
+	var arr = [];
 	for (i = 0; i < length; i++) {
 		a = getBlock().join('-');
 		if (a in result) {
@@ -98,8 +94,8 @@ var setPage2 = function(money, withoutShare) {
 		}
 	}
 	if (!withoutShare) {
-		wx_title = shareMoney.replace('{金额}', money);
-		wx_desc = shareMoney.replace('{金额}', money);
+		wx_title = '新年我能轻松赚' + money + '万，不跟尔等抢红包啦~';
+		// wx_desc = '新年我能轻松赚' + money + '万，不跟尔等抢红包啦~';
 		wx_link = baseUrl + '/index.html?m=' + money;
 		setShare();
 		$('.page2-btn2').show();
@@ -112,23 +108,19 @@ var setPage2 = function(money, withoutShare) {
 // ?m=33 进入页面
 if (get.m) {
 	page2Load(function() {
+		page1Load();
 		$('.page2-btn2').hide();
 		$('#page2-btn1-img').attr('src', './images/btn1.png').parent().addClass('center');
 		$('#page2-title-img').attr('src', './images/page2-title-2.png');
 		setPage2(get.m, true);
 		page2.fadeIn();
-		setTimeout(function() {
-			page1Load();
-		}, 100);
 	});
 } else {
 	page1Load(function() {
+		page2Load();
 		page1.fadeIn(function() {
 			shakable = true;
 		});
-		setTimeout(function() {
-			page2Load();
-		}, 100);
 	});
 }
 
@@ -151,9 +143,7 @@ window.DeviceMotionEvent && (function() {
 	var last_update = 0;
 	var x, y, z, last_x, last_y, last_z;
 	window.ondevicemotion = function(obj) {
-		if (!shakable) {
-			return;
-		}
+		if (!shakable) { return; }
 		var acceleration = obj.accelerationIncludingGravity;
 		var curTime = new Date().getTime();
 		if ((curTime - last_update) > 100) {
@@ -175,8 +165,8 @@ window.DeviceMotionEvent && (function() {
 
 // 分享
 var baseUrl = 'http://www.goopal.com.cn/yaoyiyao';
-var wx_title = shareWord;
-var wx_desc = shareWord;
+var wx_title = '抢完红包看一看, 新年你能赚多少？';
+var wx_desc = '抢完红包看一看, 新年你能赚多少？';
 var wx_link = baseUrl + '/index.html';
 var wx_imgUrl = baseUrl + '/images/weixin.png';
 var setShare = function() {
@@ -245,9 +235,9 @@ $('#page2-btn1-img').on('click', function() {
 	page2.fadeOut();
 	page1.fadeIn();
 	shakable = true;
-	wx_title = shareWord;
-	wx_desc = shareWord;
-	wx_link = baseUrl + '/index_test.html';
+	wx_title = '抢完红包看一看, 新年你能赚多少？';
+	// wx_desc = '抢完红包看一看, 新年你能赚多少？';
+	wx_link = baseUrl + '/index.html';
 	setShare();
 });
 $('#page2-btn2-img').on('click', function() {
@@ -266,15 +256,5 @@ $('.music').on('click', function() {
 		self.children().attr('src', './images/music-off.png');
 	}
 });
-
-// 横竖屏
-var page4 = $('.page4');
-$.zsy.resize(function() {
-	page4.fadeOut(0.4); // 竖屏
-}, function() {
-	page4.fadeIn(0.1); // 横屏
-});
-
-
 
 

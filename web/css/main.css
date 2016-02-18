@@ -1,4 +1,4 @@
-.screen, .page-box, .page1, .page2, .page3 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.screen, .page-box, .page1, .page2, .page3, .page4 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 .page1-flag-1, .page1-flag-2, .page2-head { position: absolute; top: 0; left: 0; width: 100%; }
 
@@ -10,7 +10,7 @@ body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
 
 .page2-bg { position: absolute; top: 50%; left: 0; width: 100%; -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
 
-.page1, .page2, .page3 { display: none; opacity: 0; }
+.page1, .page2, .page3, .page4 { display: none; opacity: 0; }
 
 .img, .img-w, .img-h, .img-f { position: relative; display: block; }
 .img-w { width: 100%; }
@@ -75,3 +75,5 @@ body { margin: 0; font-family: Arial,Verdana; background-color: #feb41d; }
   100% { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
 .page3 { overflow: hidden; background-color: rgba(0, 0, 0, 0.8); }
 .page3-share { position: absolute; top: 5%; left: 0; width: 100%; }
+.page4 { overflow: hidden; background-color: rgba(0, 0, 0, 0.9); }
+.page4-word { position: absolute; top: 44%; left: 54%; -webkit-transform: translate3d(-50%, -50%, 0); transform: translate3d(-50%, -50%, 0); width: 44%; }

@@ -7,18 +7,14 @@
 
 
 // 我的Zepto命名空间
-$.zsy = function() {};
-$.extend($.zsy, {
+$.zsy = {
 	default_time: 0.5,		// 默认运动时间
 	default_type: "linear"	// 默认运动方式
-});
+};
 
 
 
 // Zepto对象,追加方法
-
-
-
 
 $.fn.transition = function(transition) {
 	if (!arguments.length) {transition = ".3s all ease"};
@@ -275,7 +271,18 @@ $.aniframe = function(fn) {
 $.os.weixin = /micromessenger/i.test(navigator.userAgent);
 
 
-
+$.zsy.resize = function(onVertical, onHorizontal) { // 横竖屏
+	var onResize = function() {
+		if (window.orientation == 180 || window.orientation == 0 || window.innerHeight > window.innerWidth) { // 竖屏
+			onVertical && onVertical();
+		}
+		if (window.orientation == 90 || window.orientation == -90 || window.innerHeight <= window.innerWidth) { // 横屏
+			onHorizontal && onHorizontal();
+		}
+	}
+	window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", onResize, false);
+	onResize();
+};
 
 
 
